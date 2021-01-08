@@ -198,10 +198,10 @@ def patchPandasrepr(self, **kwargs):
   import pandas.io.formats.html  # necessary for loading HTMLFormatter
   defHTMLFormatter_write_cell = pandas.io.formats.html.HTMLFormatter._write_cell
   pandas.io.formats.html.HTMLFormatter._write_cell = _patched_HTMLFormatter_write_cell
-  defPandasGetAdjustment = pandas.io.formats.format._get_adjustment
-  pandas.io.formats.format._get_adjustment = _patched_get_adjustment
+  defPandasGetAdjustment = pandas.io.formats.format.get_adjustment
+  pandas.io.formats.format.get_adjustment = _patched_get_adjustment
   res = defPandasRepr(self, **kwargs)
-  pandas.io.formats.format._get_adjustment = defPandasGetAdjustment
+  pandas.io.formats.format.get_adjustment = defPandasGetAdjustment
   pandas.io.formats.html.HTMLFormatter._write_cell = defHTMLFormatter_write_cell
   return res
 
